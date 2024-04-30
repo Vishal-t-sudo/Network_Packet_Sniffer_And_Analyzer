@@ -26,13 +26,14 @@ cd Network_Packet_Sniffer_And_Analyzer
 
 4. **Build**:
 ```
-gcc -o capture Packetsniffer and Analyzer.c -lpcap
+gcc -o capture Packetsniffer_and_Analyzer.c -lpcap
 ```
 
 5. **Run**:
 ```
-sudo ./capture
+sudo ./capture [Network interface to capture packets]
 ```
+Eg: sudo ./capture enp0s3  [For Ubuntu / Debian]
 
 ## Features
 
