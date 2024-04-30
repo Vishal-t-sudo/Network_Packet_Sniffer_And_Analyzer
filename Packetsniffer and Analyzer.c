@@ -40,22 +40,34 @@ int main(int argc, char *argv[]) {
         if (ret == 1) {
             packet_handler(NULL, header, packet_data);
             packet_count++;
-            if (packet_count >= MAX_PACKETS)
-                break;
-        } else if (ret == -1) {
+        
+            //Uncomment this condition if you want to automatically end the packet capture after a certain number of packets
+            //if (packet_count >= MAX_PACKETS) 
+            //   break;
+
+        }
+
+        else if (ret == -1) {
             fprintf(stderr, "Error reading the packets: %s\n", pcap_geterr(handle));
             break;
-        } else if (ret == 0) {
+        }
+
+        else if (ret == 0) {
             // Timeout elapsed
             continue;
-        } else if (ret == -2) {
+        }
+        
+        else if (ret == -2) {
             // No more packets to read
             break;
-        } else {
+        }
+        
+        else {
             // Other error
             fprintf(stderr, "Unknown error occurred while capturing packets\n");
             break;
         }
+        
     }
 
     // Close the session
